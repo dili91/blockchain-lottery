@@ -54,4 +54,16 @@ describe('Lottery contract', () => {
             assert.equal(accounts[i], players[i]);
         }
     })
+
+    it('requires a miminum amount of ether to join', async () => {
+        try{
+            await lottery.methods.join().send({
+                from: accounts[0],
+                value: 0 // by default is wei
+            });
+            assert(false); // fail our test if an exception is not thrown
+        }catch (err) {
+            assert(err);
+        }
+    })
 })
