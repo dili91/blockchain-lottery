@@ -1,0 +1,26 @@
+{
+  "name": "blockhain-lottery",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dili91/blockchain-inbox.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dili91/blockchain-inbox/issues"
+  },
+  "homepage": "https://github.com/dili91/blockchain-inbox#readme",
+  "dependencies": {
+    "@truffle/hdwallet-provider": "^2.0.8",
+    "ganache-cli": "^6.12.2",
+    "mocha": "^10.0.0",
+    "solc": "^0.8.13",
+    "web3": "^1.7.3"
+  }
+}
