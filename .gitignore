@@ -235,4 +235,6 @@ dist
 
 # Support for Project snippet scope
 
+.DS_Store
+
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,node,solidity
