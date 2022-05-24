@@ -32,7 +32,26 @@ describe('Lottery contract', () => {
             from: accounts[0]
         });
 
-        assert.equal(accounts[0], players[0]);
         assert.equal(1, players.length)
+        assert.equal(accounts[0], players[0]);
+    })
+
+    it('allows multiple accounts to join the lottery', async () =>{
+        for(i=0; i<3; i++){
+            await lottery.methods.join().send({
+                from: accounts[i], 
+                value: web3.utils.toWei('0.02', 'ether') //amount in wei
+            });
+        }
+        
+        const players = await lottery.methods.getPlayers().call({
+            from: accounts[0]
+        });
+
+
+        assert.equal(3, players.length)
+        for(i=0; i<3; i++){
+            assert.equal(accounts[i], players[i]);
+        }
     })
 })
