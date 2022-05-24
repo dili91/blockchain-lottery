@@ -77,4 +77,24 @@ describe('Lottery contract', () => {
             assert(err);
         }
     })
+
+    it('it sends money to the winner and resets players', async () => {
+        // this test uses 1 single player to have a reliable winner 
+        await lottery.methods.join().send({
+            from: accounts[0], 
+            value: web3.utils.toWei('2', 'ether')
+        })
+
+        const initialBalance = await web3.eth.getBalance(accounts[0]);
+
+        await lottery.methods.pickWinner().send({
+            from: accounts[0]
+        })
+
+        const finalBalance = await web3.eth.getBalance(accounts[0]);
+
+        // we can't leverage strict equality due to gas consumed for non read operations
+        const difference = finalBalance - initialBalance;
+        assert(difference > web3.utils.toWei('1.8', 'ether'))
+    })
 })
