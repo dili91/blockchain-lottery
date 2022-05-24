@@ -16,6 +16,10 @@ contract Lottery {
         players.push(msg.sender);
     }
 
+    function getPlayers() public view returns (address[] memory){
+        return players;
+    }
+
     // pick a winner and send the whole money linked to this contract (this.balance) to a random winner
     function pickWinner() public isManager{
         address winner = players[random() % players.length];
